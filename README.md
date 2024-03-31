@@ -24,3 +24,11 @@ git checkout main // 기본 브랜치가 main인 경우
 git checkout -b 브랜치이름
 ex) git checkout -b apply-feedback
 ```
+
+---
+
+## 구현 기능 목록
+
+- [x] 좌표 관리
+- [ ] 선 길이 구하기
+- [ ] 입력한 좌표들을 화면에 출력하기
