@@ -1,6 +1,9 @@
 package calculator.domain;
 
+import java.util.List;
+
 public class Point {
+    private static final int SIZE = 2;
     private static final int MIN_NUM = 0;
     private static final int MAX_NUM = 24;
     private final int x;
@@ -20,6 +23,15 @@ public class Point {
     }
 
     public static Point of(int x, int y) {
+        return new Point(x, y);
+    }
+
+    public static Point from(List<Integer> rawPoint) {
+        if (null == rawPoint || rawPoint.size() != SIZE) {
+            throw new IllegalArgumentException("선은 두 개의 점으로 구성되어야 합니다.");
+        }
+        int x = rawPoint.get(0);
+        int y = rawPoint.get(1);
         return new Point(x, y);
     }
 

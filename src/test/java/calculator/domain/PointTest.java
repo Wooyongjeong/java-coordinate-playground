@@ -5,10 +5,14 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import static org.assertj.core.api.Assertions.offset;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
-import calculator.domain.Point;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class PointTest {
     @ParameterizedTest
@@ -17,6 +21,26 @@ public class PointTest {
             "0,24", "24,0", "15,24", "24,15", "24,24"})
     void create(int x, int y) {
         assertDoesNotThrow(() -> Point.of(x, y));
+    }
+
+    @ParameterizedTest
+    @MethodSource(value = "rawPointsProvider")
+    void create(List<Integer> rawPoints) {
+        assertDoesNotThrow(() -> Point.from(rawPoints));
+    }
+
+    static Stream<Arguments> rawPointsProvider() {
+        return Stream.of(
+                Arguments.of(Arrays.asList(0, 0)),
+                Arguments.of(Arrays.asList(10, 10)),
+                Arguments.of(Arrays.asList(0, 10)),
+                Arguments.of(Arrays.asList(10, 0)),
+                Arguments.of(Arrays.asList(0, 24)),
+                Arguments.of(Arrays.asList(24, 0)),
+                Arguments.of(Arrays.asList(15, 24)),
+                Arguments.of(Arrays.asList(24, 15)),
+                Arguments.of(Arrays.asList(24, 24))
+        );
     }
 
     @ParameterizedTest
@@ -29,6 +53,39 @@ public class PointTest {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> Point.of(x, y))
                 .withMessage("0 이상 24 이하의 숫자가 아닙니다.");
+    }
+
+    @ParameterizedTest
+    @MethodSource(value = "outOfRangeRawPointsProvider")
+    void outOfRange(List<Integer> rawPoints) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> Point.from(rawPoints))
+                .withMessage("0 이상 24 이하의 숫자가 아닙니다.");
+    }
+
+    static Stream<Arguments> outOfRangeRawPointsProvider() {
+        return Stream.of(
+                Arguments.of(Arrays.asList(-1, 0)),
+                Arguments.of(Arrays.asList(0, -1)),
+                Arguments.of(Arrays.asList(-1, -1)),
+                Arguments.of(Arrays.asList(-1, 10)),
+                Arguments.of(Arrays.asList(10, -1)),
+                Arguments.of(Arrays.asList(10, 25)),
+                Arguments.of(Arrays.asList(25, 10)),
+                Arguments.of(Arrays.asList(0, 25)),
+                Arguments.of(Arrays.asList(25, 0)),
+                Arguments.of(Arrays.asList(0, 25)),
+                Arguments.of(Arrays.asList(25, 25))
+        );
+    }
+
+    @Test
+    void wrongSize() {
+        List<Integer> rawPoints = Arrays.asList(1, 2, 3);
+
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> Point.from(rawPoints))
+                .withMessage("선은 두 개의 점으로 구성되어야 합니다.");
     }
 
     @Test
