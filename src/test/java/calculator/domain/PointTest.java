@@ -103,4 +103,24 @@ public class PointTest {
         double expected = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
         assertThat(result).isEqualTo(expected, offset(0.00099));
     }
+
+    @Test
+    void onSameLine() {
+        // given
+        Point point1 = Point.of(10, 20);
+        Point point2 = Point.of(10, 15);
+
+        Point point3 = Point.of(5, 10);
+        Point point4 = Point.of(20, 10);
+
+        // when
+        boolean actual1 = point1.onSameLine(point2);
+        boolean actual2 = point3.onSameLine(point4);
+        boolean actual3 = point1.onSameLine(point3);
+
+        // then
+        assertThat(actual1).isTrue();
+        assertThat(actual2).isTrue();
+        assertThat(actual3).isFalse();
+    }
 }

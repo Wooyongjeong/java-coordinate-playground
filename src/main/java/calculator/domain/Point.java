@@ -40,4 +40,8 @@ public class Point {
         double distanceY = y - other.y;
         return Math.sqrt(Math.pow(distanceX, 2) + Math.pow(distanceY, 2));
     }
+
+    public boolean onSameLine(Point other) {
+        return x == other.x || y == other.y;
+    }
 }
