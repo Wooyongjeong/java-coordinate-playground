@@ -1,6 +1,7 @@
 package calculator;
 
-import calculator.domain.Line;
+import calculator.domain.Figure;
+import calculator.domain.FigureFactory;
 import calculator.domain.Point;
 import calculator.ui.InputView;
 import calculator.ui.OutputView;
@@ -16,30 +17,29 @@ public class Calculator {
         this.outputView = outputView;
     }
 
-    public void run() {
-        List<List<Integer>> rawPoints;
-        List<Point> points;
+    private List<Point> createPointsFrom(List<List<Integer>> rawPoints) {
+        return rawPoints.stream()
+                .map(Point::from)
+                .collect(Collectors.toList());
+    }
 
+    private double getResult(List<Point> points) {
+        Figure figure = FigureFactory.getFigure(points);
+        return figure.calculate();
+    }
+
+    public void run() {
         while (true) {
             try {
-                rawPoints = inputView.inputPoints();
-                points = getPoints(rawPoints);
+                List<List<Integer>> rawPoints = inputView.inputPoints();
+                List<Point> points = createPointsFrom(rawPoints);
+                double result = getResult(points);
+                outputView.printCoordinates(rawPoints);
+                outputView.printResult(points.size(), result);
                 break;
             } catch (IllegalArgumentException e) {
                 outputView.printErrorMessage(e.getMessage());
             }
         }
-
-        Line line = Line.of(points);
-        double result = line.length();
-
-        outputView.printCoordinates(rawPoints);
-        outputView.printLineResult(result);
-    }
-
-    private List<Point> getPoints(List<List<Integer>> rawPoints) {
-        return rawPoints.stream()
-                .map(Point::from)
-                .collect(Collectors.toList());
     }
 }
