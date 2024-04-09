@@ -8,7 +8,6 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-
 public class LineTest {
     @Test
     void create() {
@@ -20,7 +19,7 @@ public class LineTest {
     }
 
     @Test
-    void length() {
+    void calculate() {
         // given
         int x1 = 10, y1 = 10;
         int x2 = 14, y2 = 15;
@@ -30,7 +29,7 @@ public class LineTest {
 
         // when
         Line line = Line.of(points);
-        double result = line.length();
+        double result = line.calculate();
 
         // then
         double expected = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
