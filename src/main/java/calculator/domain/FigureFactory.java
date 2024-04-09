@@ -8,7 +8,10 @@ public class FigureFactory {
             throw new IllegalArgumentException("Point 리스트는 null일 수 없습니다.");
         }
         if (points.size() == Line.SIZE) {
-            return Line.of(points);
+            return Line.from(points);
+        }
+        if (points.size() == Triangle.SIZE) {
+            return Triangle.from(points);
         }
         if (points.size() == Rectangle.SIZE) {
             return Rectangle.from(points);

@@ -2,6 +2,7 @@ package calculator.ui;
 
 import calculator.domain.Line;
 import calculator.domain.Rectangle;
+import calculator.domain.Triangle;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -113,6 +114,9 @@ public class OutputView {
     public void printResult(int size, double result) {
         if (size == Line.SIZE) {
             System.out.printf("두 점 사이의 거리는 %.6f\n", result);
+        }
+        if (size == Triangle.SIZE) {
+            System.out.printf("삼각형 넓이는 %.6f\n", result);
         }
         if (size == Rectangle.SIZE) {
             System.out.println("사각형 넓이는 " + (int) result);

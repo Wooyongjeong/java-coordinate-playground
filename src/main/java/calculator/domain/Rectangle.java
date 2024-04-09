@@ -53,8 +53,8 @@ public class Rectangle implements Figure {
         List<Point> onSameLinePoints = getOnSameLinePoints(point1);
         Point point2 = onSameLinePoints.get(0);
         Point point3 = onSameLinePoints.get(1);
-        Line line1 = Line.of(Arrays.asList(point1, point2));
-        Line line2 = Line.of(Arrays.asList(point1, point3));
+        Line line1 = Line.from(Arrays.asList(point1, point2));
+        Line line2 = Line.from(Arrays.asList(point1, point3));
         return line1.calculate() * line2.calculate();
     }
 

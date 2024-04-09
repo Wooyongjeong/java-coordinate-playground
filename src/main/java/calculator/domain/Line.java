@@ -13,7 +13,7 @@ public class Line implements Figure {
         this.points = points;
     }
 
-    public static Line of(List<Point> points) {
+    public static Line from(List<Point> points) {
         return new Line(points);
     }
 

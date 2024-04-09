@@ -15,7 +15,7 @@ public class LineTest {
         Point point2 = Point.of(14, 15);
         List<Point> points = Arrays.asList(point1, point2);
 
-        assertDoesNotThrow(() -> Line.of(points));
+        assertDoesNotThrow(() -> Line.from(points));
     }
 
     @Test
@@ -28,7 +28,7 @@ public class LineTest {
         List<Point> points = Arrays.asList(point1, point2);
 
         // when
-        Line line = Line.of(points);
+        Line line = Line.from(points);
         double result = line.calculate();
 
         // then
