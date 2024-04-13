@@ -24,11 +24,26 @@ public class Point {
         return coordinate < MIN_LIMIT || coordinate > MAX_LIMIT;
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
     public double calculateDistance(Point other) {
         return Math.sqrt(squareDifference(this.x, other.x) + squareDifference(this.y, other.y));
     }
 
     private double squareDifference(int firstValue, int secondValue) {
         return Math.pow(firstValue - secondValue, 2);
+    }
+
+    public double calculateSlope(Point other) {
+        if (this.x == other.x) {
+            return Double.MAX_VALUE;
+        }
+        return Math.abs((this.y - other.y) / (this.x - other.x));
     }
 }

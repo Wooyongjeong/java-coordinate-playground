@@ -35,9 +35,8 @@ ex) git checkout -b apply-feedback
 
 ## Figure (Line, Triangle, Rectangle)
 
-- [] Point 개수 반환
-- [] 넓이 계산
-- [] 콘솔에 출력할 결과 문자열 반환
+- [x] 넓이 계산
+- [x] 콘솔에 출력할 결과 문자열 반환
 
 ## FigureFactory
 
