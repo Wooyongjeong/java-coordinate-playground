@@ -24,3 +24,23 @@ git checkout main // 기본 브랜치가 main인 경우
 git checkout -b 브랜치이름
 ex) git checkout -b apply-feedback
 ```
+
+---
+
+# 구현 기능 목록
+
+## Point
+
+- [] 다른 점과의 거리 계산
+
+## Figure (Line, Triangle, Rectangle)
+
+- [] Point 개수 반환
+- [] 넓이 계산
+- [] 콘솔에 출력할 결과 문자열 반환
+
+## View
+
+- [] 사용자로부터 좌표 입력
+- [] 입력한 좌표 콘솔에 출력
+- [] 점의 개수에 따라 Figure 넓이 계산 결과 출력
