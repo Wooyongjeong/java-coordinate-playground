@@ -17,7 +17,12 @@ public class Triangle extends AbstractFigure {
         Point point1 = points.get(0);
         Point point2 = points.get(1);
         Point point3 = points.get(2);
-        return point1.calculateSlope(point2) == point1.calculateSlope(point3);
+
+        double slope1 = point1.calculateSlope(point2);
+        double slope2 = point1.calculateSlope(point3);
+        double slope3 = point2.calculateSlope(point3);
+
+        return slope1 == slope2 && slope1 == slope3 && slope2 == slope3;
     }
 
     @Override

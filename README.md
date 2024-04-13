@@ -40,7 +40,7 @@ ex) git checkout -b apply-feedback
 
 ## FigureFactory
 
-- [] 입력된 Point 개수에 맞는 Figure 객체 생성하여 반환
+- [x] 입력된 Point 개수에 맞는 Figure 객체 생성하여 반환
 
 ## View
 
