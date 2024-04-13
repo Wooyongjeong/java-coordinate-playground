@@ -3,8 +3,8 @@ package coordinate.model;
 public class Point {
     private static final String ERROR_OUT_OF_RANGE
             = "범위를 벗어났습니다. " + Point.MIN_LIMIT + " ~ " + Point.MAX_LIMIT + " 사이의 값을 입력해 주세요.";
-    private static final int MIN_LIMIT = 0;
-    private static final int MAX_LIMIT = 24;
+    public static final int MIN_LIMIT = 1;
+    public static final int MAX_LIMIT = 24;
     private final int x;
     private final int y;
 
@@ -45,5 +45,9 @@ public class Point {
             return Double.MAX_VALUE;
         }
         return Math.abs((this.y - other.y) / (this.x - other.x));
+    }
+
+    public boolean isSame(int x, int y) {
+        return this.x == x && this.y == y;
     }
 }

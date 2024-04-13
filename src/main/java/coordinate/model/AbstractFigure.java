@@ -17,4 +17,10 @@ public abstract class AbstractFigure implements Figure {
     public List<Point> getPoints() {
         return points;
     }
+
+    @Override
+    public boolean hasPoint(int x, int y) {
+        return points.stream()
+                .anyMatch(point -> point.isSame(x, y));
+    }
 }

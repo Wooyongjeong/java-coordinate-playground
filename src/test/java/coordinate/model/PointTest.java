@@ -16,7 +16,7 @@ public class PointTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"-1,0", "0,-1", "25,0", "0,25"})
+    @CsvSource(value = {"-1,1", "1,-1", "25,1", "1,25"})
     void outOfRange(int x, int y) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new Point(x, y));
@@ -34,5 +34,29 @@ public class PointTest {
         // then
         double expectedDistance = 6.403124;
         assertThat(actualDistance).isEqualTo(expectedDistance, offset(0.00099));
+    }
+
+    @Test
+    void isSameTrue() {
+        // given
+        Point point = new Point(10, 10);
+
+        // when
+        boolean actualResult = point.isSame(10, 10);
+
+        // then
+        assertThat(actualResult).isTrue();
+    }
+
+    @Test
+    void isSameFalse() {
+        // given
+        Point point = new Point(10, 10);
+
+        // when
+        boolean actualResult = point.isSame(11, 11);
+
+        // then
+        assertThat(actualResult).isFalse();
     }
 }

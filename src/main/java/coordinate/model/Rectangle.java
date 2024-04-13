@@ -9,6 +9,7 @@ import java.util.function.Function;
 
 public class Rectangle extends AbstractFigure {
     private static final String ERROR_INVALID_RECTANGLE = "직사각형 모양이 아닙니다.";
+    private static final String OUTPUT_AREA_OF_RECTANGLE = "사각형 넓이는 ";
     private static final int NUM_OF_VERTICES_OF_RECTANGLE = 2;
 
     public Rectangle(List<Point> points) {
@@ -57,6 +58,6 @@ public class Rectangle extends AbstractFigure {
 
     @Override
     public String getAreaInfo() {
-        return null;
+        return OUTPUT_AREA_OF_RECTANGLE + area();
     }
 }
