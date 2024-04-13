@@ -31,7 +31,7 @@ ex) git checkout -b apply-feedback
 
 ## Point
 
-- [] 다른 점과의 거리 계산
+- [x] 다른 점과의 거리 계산
 
 ## Figure (Line, Triangle, Rectangle)
 
