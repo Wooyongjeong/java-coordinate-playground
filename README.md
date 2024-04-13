@@ -39,6 +39,10 @@ ex) git checkout -b apply-feedback
 - [] 넓이 계산
 - [] 콘솔에 출력할 결과 문자열 반환
 
+## FigureFactory
+
+- [] 입력된 Point 개수에 맞는 Figure 객체 생성하여 반환
+
 ## View
 
 - [] 사용자로부터 좌표 입력
